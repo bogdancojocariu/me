@@ -3,7 +3,7 @@ import Typing from 'react-typist';
 
 export class Home extends React.Component {
     render() {
-        const social = ['facebook', 'linkedin', 'tinder'];
+        const social = ['facebook', 'linkedin', 'pornhub', 'tinder'];
         const getSocial = social.map( s => {
             return (
                 <span key={s}>
@@ -15,7 +15,7 @@ export class Home extends React.Component {
 
         return (
             <div>
-                <h1>Hello, my name is Bogdan and I am a front-end developer</h1>
+                <h1>Hello, my name is Bogdan and I am a frontend developer</h1>
                 <h2>Welcome to my homepage</h2>
                 <div className="social">
                     <Typing>
