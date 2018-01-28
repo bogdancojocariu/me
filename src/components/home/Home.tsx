@@ -1,9 +1,11 @@
 import * as React from 'react';
 import Typing from 'react-typing-animation';
 import styled from 'styled-components';
+import breakpoint from 'styled-components-breakpoint';
 import FA from 'react-fontawesome';
 
 const right = require('./right_side.jpg');
+const left = require('./left_side.jpg');
 
 const Wrapper = styled.div`
     position: absolute;
@@ -12,19 +14,40 @@ const Wrapper = styled.div`
     display: flex;
 `;
 const Title = styled.div`
-    margin-top: 30%;
 `;
-
+const MobileHeader = styled.div`
+    background-image: url(${left});
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    width: 350px;
+    height: 350px;
+    margin: 0 auto;
+    ${breakpoint('tablet')`
+        display: none;
+    `}
+`;
 const LeftSide = styled.div`
-    float: left;
-    width: 60%;
-    height: 100%;
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ${breakpoint('tablet')`
+        float: left;
+        width: 50%;
+        height: 100%;
+    `}
 `;
 const RightSide = styled.div`
-    width: 40%;
-    height: 100%;
-    background-image: url(${right});
-    background-size: cover;
+    display: none;
+    ${breakpoint('tablet')`
+        display: block;
+        width: 50%;
+        height: 100%;
+        background-image: url(${right});
+        background-size: cover;
+    `}
 `;
 const StyledSocial = styled.a`
     margin: 0 20px;
@@ -61,6 +84,7 @@ export class Home extends React.Component {
             <Wrapper>
                 <LeftSide>
                     <Title>
+                        <MobileHeader />
                         <h1>Hello, I am Bogdan and I am a frontend developer</h1>
                         <h2>Welcome to my homepage</h2>
                         <div className="social">
@@ -69,10 +93,10 @@ export class Home extends React.Component {
                                 <span>twitter</span>
                             </Typing>
                         </div>
+                        <div>
+                            {generateSocialLinks}
+                        </div>
                     </Title>
-                    <div>
-                        {generateSocialLinks}
-                    </div>
                 </LeftSide>
                 <RightSide />
             </Wrapper>
