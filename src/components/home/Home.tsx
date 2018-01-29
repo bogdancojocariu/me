@@ -15,39 +15,35 @@ const Wrapper = styled.div`
 `;
 const Title = styled.div`
 `;
-const MobileHeader = styled.div`
-    background-image: url(${left});
-    background-repeat: no-repeat;
-    background-size: cover;
+const MobileHeaderImage = styled.img`
     border-radius: 20px;
-    width: 350px;
-    height: 350px;
+    width: 40%;
     margin: 0 auto;
-    ${breakpoint('tablet')`
+    ${({theme}) => breakpoint('lg', theme.breakpoints)`
         display: none;
     `}
 `;
 const LeftSide = styled.div`
     box-sizing: border-box;
-    padding: 0 20px;
+    padding: 20px;
     width: 100%;
-    display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    ${breakpoint('tablet')`
+    ${({theme}) => breakpoint('lg', theme.breakpoints)`
+        display: flex;
         float: left;
-        width: 50%;
+        width: calc(100% - 650px);
         height: 100%;
     `}
 `;
-const RightSide = styled.div`
+const RightSide = styled.img`
     display: none;
-    ${breakpoint('tablet')`
+    ${({theme}) => breakpoint('lg', theme.breakpoints)`
+        position: absolute;
+        right: 0;
         display: block;
-        width: 50%;
+        width: 650px;
         height: 100%;
-        background-image: url(${right});
-        background-size: cover;
     `}
 `;
 const StyledSocial = styled.a`
@@ -85,7 +81,7 @@ export class Home extends React.Component {
             <Wrapper>
                 <LeftSide>
                     <Title>
-                        <MobileHeader />
+                        <MobileHeaderImage src={left} />
                         <h1>Hello, I am Bogdan and I am a frontend developer</h1>
                         <h2>Welcome to my homepage</h2>
                         <div className="social">
@@ -99,7 +95,7 @@ export class Home extends React.Component {
                         </div>
                     </Title>
                 </LeftSide>
-                <RightSide />
+                <RightSide src={right}/>
             </Wrapper>
         );
     }
